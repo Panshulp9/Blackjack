@@ -5,4 +5,9 @@ public class Player {
     public boolean isHit;
     public String name;
 
+    public Player(){
+        cardTotal = 2;
+    }
+
+
 }

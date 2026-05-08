@@ -3,4 +3,8 @@ public class Dealer {
     public int cardTotal;
     public Card[]hand;
     public boolean isBust;
+
+    public Dealer(){
+        cardTotal = 2;
+    }
 }

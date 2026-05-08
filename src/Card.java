@@ -3,7 +3,23 @@ public class Card {
     public String name;
     public String suit;
 
-    Card(){
-        value = (int)(Math.random()*11)+2;
+    public Card(int CValue, int CName, String CSuit){
+        value = CValue;
+
+       if (CName == 0){
+            name = "ace";
+            value = 11;
+        } else if(CName == 1){
+           name = "2";
+           value = 2;
+       }
+
+        suit = CSuit;
+    }
+
+    //todo: make a printInfo method that prints the card info
+
+    public void printInfo(){
+        System.out.println("The " + name + " of " + suit + " is worth " + value + " points.");
     }
 }
