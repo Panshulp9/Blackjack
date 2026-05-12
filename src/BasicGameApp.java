@@ -7,17 +7,29 @@ public class BasicGameApp {
     public static void main(String[] args) {
         BasicGameApp a = new BasicGameApp();
     }
-   public BasicGameApp(){
+   public BasicGameApp() {
        System.out.println("Welcome to Blackjack!");
        gameOn = true;
        deck = new Card[52];
+       String suits[] = {"Diamonds", "Spades", "Hearts", "Clubs"};
+
 
        //todo: fill the deck array with your favorite card
-       for (int x = 0; x < 13; x++){
-           deck[x] = new Card(9,x,"diamonds");
-           deck[x].printInfo();
-       }
+       int index = 0;
+       for (int i = 0; i < suits.length; i++) {
+           for (int x = 1; x <= 13; x++) {
+               deck[index] = new Card(x, x, suits[i]);
+               index++;
+           }
 
+       }
+       printDeck();
+   }
+   public void printDeck(){
+      for (int y = 0; y < deck.length; y++){
+        deck[y].printInfo();
+       }
     }
+
 
 }
