@@ -5,6 +5,9 @@ public class Dealer {
     public boolean isBust;
 
     public Dealer(){
-        cardTotal = 2;
+
+        cardTotal = 0;
+        isBust = false;
+        isOver16 = false;
     }
 }

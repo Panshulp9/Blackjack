@@ -3,6 +3,8 @@ public class BasicGameApp {
     public Player p1;
     public Dealer d1;
     public boolean gameOn;
+    public int cardIndex = 0;
+
 
     public static void main(String[] args) {
         BasicGameApp a = new BasicGameApp();
@@ -15,21 +17,35 @@ public class BasicGameApp {
 
 
        //todo: fill the deck array with your favorite card
-       int index = 0;
+
        for (int i = 0; i < suits.length; i++) {
-           for (int x = 1; x <= 13; x++) {
-               deck[index] = new Card(x, x, suits[i]);
-               index++;
+           for (int x = 0; x <= 12; x++) {
+               deck[cardIndex] = new Card(x, x, suits[i]);
+               cardIndex++;
            }
 
        }
+       shuffle();
        printDeck();
+
+
    }
-   public void printDeck(){
-      for (int y = 0; y < deck.length; y++){
-        deck[y].printInfo();
-       }
+
+   //todo: Make a shuffle method inside the method. Go through every card aka for loop
+    public void shuffle(){
+        for (int y = 0; y < deck.length; y++){
+            int randy = (int)(Math.random()*52);
+            Card helper = deck[randy];
+            deck[randy] = deck[y];
+            deck[y] = helper;
+        }
     }
+
+   public void printDeck() {
+       for (int y = 0; y < deck.length; y++) {
+           deck[y].printInfo();
+       }
+   }
 
 
 }

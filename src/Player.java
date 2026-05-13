@@ -6,7 +6,11 @@ public class Player {
     public String name;
 
     public Player(){
-        cardTotal = 2;
+
+        cardTotal = 0;
+        isBust = false;
+        isHit = false;
+        name = "Player 1";
     }
 
 
