@@ -14,8 +14,8 @@ public class Dealer {
         System.out.println("The card total:" + cardTotal);
         System.out.println("is busted: " + isBust);
         System.out.println("is over 16: " + isOver16);
-        for(int z = 0; z < hand.length; z++){
-            System.out.println(hand[z]);
+        for(int t = 0; t < hand.length; t++){
+            hand[t].printInfo();
         }
     }
 }

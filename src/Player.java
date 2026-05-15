@@ -12,13 +12,23 @@ public class Player {
         isHit = false;
         name = "Player 1";
     }
+    //todo: make a method called calculateTota()
+    public void calculateTotal(){
+        int addedValue = 0;
+        for (int d = 0; d < hand.length; d++){
+            addedValue = addedValue + hand[d].value;
+        }
+        cardTotal = addedValue;
+    }
+
     public void printInfo(){
         System.out.println("The card total:" + cardTotal);
         System.out.println("is busted: " + isBust);
         System.out.println("is hit: " + isHit);
-        System.out.println(name);
+        System.out.println("name: " + name);
         for(int z = 0; z < hand.length; z++){
-            System.out.println(hand[z]);
+            hand[z].printInfo();
         }
     }
+
 }
