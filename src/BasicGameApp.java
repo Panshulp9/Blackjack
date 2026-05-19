@@ -18,6 +18,7 @@ public class BasicGameApp {
        String[] suits = {"Diamonds", "Spades", "Hearts", "Clubs"};
        //players
        p1 = new Player();
+       d1 = new Dealer();
 
 
        //todo: fill the deck array with your favorite card
@@ -35,6 +36,8 @@ public class BasicGameApp {
        //give players cards
        p1.hand[0] = deck[0];
        p1.hand[1] = deck[1];
+       d1.dHand[0] = deck[2];
+       d1.dHand[1] = deck[3];
        //todo: Homework - give the dealer 2 cards
 
        Scanner s = new Scanner(System.in);
@@ -43,7 +46,11 @@ public class BasicGameApp {
        System.out.println(aName);
        p1.name = aName;
        p1.calculateTotal();
+       System.out.println(p1.calculateTotal());
        p1.printInfo();
+       d1.totalValue();
+       System.out.println(d1.totalValue());
+       d1.printInfo();
 
    }
 

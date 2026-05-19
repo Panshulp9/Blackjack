@@ -12,13 +12,14 @@ public class Player {
         isHit = false;
         name = "Player 1";
     }
-    //todo: make a method called calculateTota()
-    public void calculateTotal(){
+    //todo: make a method called calculateTotal()
+    public int calculateTotal(){
         int addedValue = 0;
         for (int d = 0; d < hand.length; d++){
             addedValue = addedValue + hand[d].value;
         }
         cardTotal = addedValue;
+        return cardTotal;
     }
 
     public void printInfo(){
