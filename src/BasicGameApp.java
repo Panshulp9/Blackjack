@@ -1,11 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BasicGameApp {
-    public Card[]deck;
+    ArrayList<Card> deck;
     public Player p1;
     public Dealer d1;
     public boolean gameOn;
-    public int cardIndex = 0;
 
 
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class BasicGameApp {
    public BasicGameApp() {
        System.out.println("Welcome to Blackjack!");
        gameOn = true;
-       deck = new Card[52];
+       deck = new ArrayList<>();
        String[] suits = {"Diamonds", "Spades", "Hearts", "Clubs"};
        //players
        p1 = new Player();
@@ -25,19 +25,17 @@ public class BasicGameApp {
 
        for (int i = 0; i < suits.length; i++) {
            for (int x = 0; x <= 12; x++) {
-               deck[cardIndex] = new Card(x, x, suits[i]);
-               cardIndex++;
+               deck.add(new Card(x,x,suits[i]));
            }
-
        }
        shuffle();
        printDeck();
 
        //give players cards
-       p1.hand[0] = deck[0];
-       p1.hand[1] = deck[1];
-       d1.dHand[0] = deck[2];
-       d1.dHand[1] = deck[3];
+       p1.hand.add(deck.get(0));
+       p1.hand.add(deck.get(1));
+       d1.dHand.add(deck.get(2));
+       d1.dHand.add(deck.get(3));
        //todo: Homework - give the dealer 2 cards
 
        Scanner s = new Scanner(System.in);
@@ -51,22 +49,37 @@ public class BasicGameApp {
        d1.totalValue();
        System.out.println(d1.totalValue());
        d1.printInfo();
+       playerMoves();
 
    }
 
    //todo: Make a shuffle method inside the method. Go through every card aka for loop
     public void shuffle(){
-        for (int y = 0; y < deck.length; y++){
+        for (int y = 0; y < deck.size(); y++){
             int randy = (int)(Math.random()*52);
-            Card helper = deck[randy];
-            deck[randy] = deck[y];
-            deck[y] = helper;
+            Card helper = deck.get(randy);
+            deck.set(randy,deck.get(y));
+            deck.set(y,helper);
         }
     }
 
    public void printDeck() {
-       for (int y = 0; y < deck.length; y++) {
-           deck[y].printInfo();
+       for (int y = 0; y < deck.size(); y++) {
+           deck.get(y).printInfo();
+       }
+   }
+   public void playerMoves(){
+       Scanner Hit = new Scanner(System.in);
+       if (p1.isUnder21) {
+           System.out.println("Do you want to hit?");
+           String wantHit = Hit.nextLine();
+           System.out.println(wantHit);
+           if (wantHit .equals("yes")) {
+               p1.hand.add(deck.get(4));
+               for(int i = 0; i < p1.hand.size(); i++){
+                   p1.hand.get(i).printInfo();
+               }
+           }
        }
    }
 
