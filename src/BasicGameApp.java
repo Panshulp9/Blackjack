@@ -70,16 +70,24 @@ public class BasicGameApp {
    }
    public void playerMoves(){
        Scanner Hit = new Scanner(System.in);
-       if (p1.isUnder21) {
+       int newCard = 4;
+           while(p1.isUnder21 && !p1.isBust){
            System.out.println("Do you want to hit?");
            String wantHit = Hit.nextLine();
            System.out.println(wantHit);
            if (wantHit .equals("yes")) {
-               p1.hand.add(deck.get(4));
+               p1.hand.add(deck.get(newCard));
                for(int i = 0; i < p1.hand.size(); i++){
                    p1.hand.get(i).printInfo();
                }
+               if (p1.isOver21){
+                   p1.isBust = true;
+               }
+               if (p1.is21){
+                   p1.gameWon = true;
+               }
            }
+               newCard++;
        }
    }
 

@@ -8,6 +8,7 @@ public class Player {
     public boolean is21;
     public boolean isUnder21;
     public boolean isOver21;
+    public boolean gameWon;
     ArrayList<Card> hand;
 
     public Player(){
@@ -19,6 +20,7 @@ public class Player {
         is21 = false;
         isUnder21 = false;
         isOver21 = false;
+        gameWon = false;
     }
     //todo: make a method called calculateTotal()
     public int calculateTotal(){
