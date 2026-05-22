@@ -18,6 +18,9 @@ public class Dealer {
             vales = vales + dHand.get(d).value;
         }
         cardTotal = vales;
+        if (cardTotal == 16){
+            isOver16 = true;
+        }
         return cardTotal;
     }
     public void printInfo(){
