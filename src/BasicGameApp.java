@@ -30,25 +30,26 @@ public class BasicGameApp {
            }
        }
        shuffle();
-       printDeck();
+       //printDeck();
 
        //give players cards
        p1.hand.add(deck.get(0));
        p1.hand.add(deck.get(1));
+
        //todo: Homework - give the dealer 2 cards
 
        Scanner s = new Scanner(System.in);
        System.out.println("What is your name?");
        String aName = s.nextLine();
-       System.out.println(aName);
+    //   System.out.println(aName);
        p1.name = aName;
        p1.calculateTotal();
        System.out.println(p1.calculateTotal());
        p1.printInfo();
        System.out.println(d1.totalValue());
-       d1.printInfo();
        playerMoves();
        dealerMoves();
+       winGame();
 
    }
 
@@ -62,18 +63,17 @@ public class BasicGameApp {
         }
     }
 
-   public void printDeck() {
-       for (int y = 0; y < deck.size(); y++) {
-           deck.get(y).printInfo();
-       }
-   }
+   //public void printDeck() {
+      // for (int y = 0; y < deck.size(); y++) {
+        //   deck.get(y).printInfo();
+      // }
+  // }
    public void playerMoves(){
        Scanner Hit = new Scanner(System.in);
            while(p1.isUnder21 && !p1.isBust){
            System.out.println("Do you want to hit?");
            String wantHit = Hit.nextLine();
-           System.out.println(wantHit);
-           if (wantHit .equals("yes")) {
+           if (wantHit.equals("yes")) {
                p1.hand.add(deck.get(topCard));
                for(int i = 0; i < p1.hand.size(); i++){
                    p1.hand.get(i).printInfo();
@@ -94,21 +94,42 @@ public class BasicGameApp {
        }
    }
    public void dealerMoves(){
+       System.out.println("DEALER'S TURN");
        for (int c = 0; c < 2; c++){
-           d1.dHand.add(deck.get(topCard));
            topCard++;
+           d1.dHand.add(deck.get(topCard));
        }
-       System.out.println(d1.totalValue());
+       d1.totalValue();
        d1.printInfo();
-       while(!d1.isOver16){
+       while(d1.cardTotal <= 16){
+           System.out.println("The total value is " + d1.totalValue());
            d1.dHand.add(deck.get(topCard));
-           System.out.println(d1.totalValue());
-           d1.dHand.get(topCard).printInfo();
+           d1.totalValue();
+           d1.dHand.get(d1.dHand.size()-1).printInfo();
+           System.out.println("The total value is " + d1.totalValue());
            topCard++;
+           if (d1.cardTotal >= 21){
+               d1.isBust = true;
+           }
            if (d1.cardTotal >= 16){
+               d1.isOver16 = true;
                break;
            }
 
        }
+   }
+   public void winGame(){
+        if (p1.cardTotal > d1.cardTotal && !p1.isOver21){
+            System.out.println(p1.name + " won!");
+        }
+        if (d1.cardTotal >= p1.cardTotal && !d1.isBust){
+            System.out.println("Dealer wins!");
+        }
+        if (p1.is21){
+            System.out.println(p1.name + " won!");
+        }
+        if (d1.isBust){
+            System.out.println(p1.name + " won!");
+        }
    }
 }

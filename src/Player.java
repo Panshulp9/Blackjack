@@ -49,8 +49,8 @@ public class Player {
     public void printInfo(){
         System.out.println("The card total:" + cardTotal);
         System.out.println("is busted: " + isBust);
-        System.out.println("is hit: " + isHit);
-        System.out.println("name: " + name);
+      //  System.out.println("is hit: " + isHit);
+      //  System.out.println("name: " + name);
         for(int z = 0; z < hand.size(); z++){
             hand.get(z).printInfo();
         }
