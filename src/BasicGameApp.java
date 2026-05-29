@@ -50,6 +50,7 @@ public class BasicGameApp {
        playerMoves();
        dealerMoves();
        winGame();
+       System.out.println("hello");
 
    }
 
@@ -136,6 +137,7 @@ public class BasicGameApp {
             gameOn = false;
         }
       while (!gameOn) {
+          System.out.println("Want to restart?");
           Scanner newRound = new Scanner(System.in);
           String restart = newRound.nextLine();
           if (restart.equals("yes")){
