@@ -121,15 +121,31 @@ public class BasicGameApp {
    public void winGame(){
         if (p1.cardTotal > d1.cardTotal && !p1.isOver21){
             System.out.println(p1.name + " won!");
+            gameOn = false;
         }
         if (d1.cardTotal >= p1.cardTotal && !d1.isBust){
             System.out.println("Dealer wins!");
+            gameOn = false;
         }
         if (p1.is21){
             System.out.println(p1.name + " won!");
+            gameOn = false;
         }
         if (d1.isBust){
             System.out.println(p1.name + " won!");
+            gameOn = false;
         }
+      while (!gameOn) {
+          Scanner newRound = new Scanner(System.in);
+          String restart = newRound.nextLine();
+          if (restart.equals("yes")){
+              BasicGameApp b = new BasicGameApp();
+              gameOn = true;
+
+          }
+          else{
+              break;
+          }
+      }
    }
 }
