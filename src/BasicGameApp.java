@@ -50,7 +50,19 @@ public class BasicGameApp {
        playerMoves();
        dealerMoves();
        winGame();
-       System.out.println("hello");
+       while (!gameOn) {
+           System.out.println("Want to restart?");
+           Scanner newRound = new Scanner(System.in);
+           String restart = newRound.nextLine();
+           if (restart.equals("yes")){
+               BasicGameApp b = new BasicGameApp();
+               gameOn = true;
+
+           }
+           else{
+               break;
+           }
+       }
 
    }
 
@@ -79,6 +91,7 @@ public class BasicGameApp {
                for(int i = 0; i < p1.hand.size(); i++){
                    p1.hand.get(i).printInfo();
                }
+
                System.out.println(p1.calculateTotal());
                if (p1.isOver21){
                    p1.isBust = true;
@@ -136,18 +149,5 @@ public class BasicGameApp {
             System.out.println(p1.name + " won!");
             gameOn = false;
         }
-      while (!gameOn) {
-          System.out.println("Want to restart?");
-          Scanner newRound = new Scanner(System.in);
-          String restart = newRound.nextLine();
-          if (restart.equals("yes")){
-              BasicGameApp b = new BasicGameApp();
-              gameOn = true;
-
-          }
-          else{
-              break;
-          }
-      }
    }
 }

@@ -59,14 +59,6 @@ public class Card {
             value = 10;
         }
 
-
-
-
-
-
-
-
-
         suit = CSuit;
     }
 

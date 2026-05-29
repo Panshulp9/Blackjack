@@ -9,10 +9,12 @@ public class Player {
     public boolean isUnder21;
     public boolean isOver21;
     public boolean gameWon;
+    public boolean isAce;
     ArrayList<Card> hand;
 
     public Player(){
         hand = new ArrayList<>();
+        isAce = false;
         cardTotal = 0;
         isBust = false;
         isHit = false;
@@ -25,8 +27,18 @@ public class Player {
     //todo: make a method called calculateTotal()
     public int calculateTotal(){
         int addedValue = 0;
+        int aceLocation = -1;
         for (int d = 0; d < hand.size(); d++){
+            if (hand.get(d).value == 11){
+                isAce = true;
+                aceLocation = d;
+            }
             addedValue = addedValue + hand.get(d).value;
+
+        }
+        if (isAce && isOver21){
+            hand.get(aceLocation).value = 1;
+            addedValue = addedValue - 10;
         }
         cardTotal = addedValue;
         if (cardTotal == 21){
