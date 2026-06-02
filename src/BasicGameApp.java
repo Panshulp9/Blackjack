@@ -35,6 +35,8 @@ public class BasicGameApp {
        //give players cards
        p1.hand.add(deck.get(0));
        p1.hand.add(deck.get(1));
+       d1.dHand.add(deck.get(2));
+
 
        //todo: Homework - give the dealer 2 cards
 
@@ -43,10 +45,10 @@ public class BasicGameApp {
        String aName = s.nextLine();
     //   System.out.println(aName);
        p1.name = aName;
+       System.out.println("The dealer's first card is: ");
+       d1.dHand.getFirst().printInfo();
        p1.calculateTotal();
-       System.out.println(p1.calculateTotal());
        p1.printInfo();
-       System.out.println(d1.totalValue());
        playerMoves();
        dealerMoves();
        winGame();
@@ -109,7 +111,7 @@ public class BasicGameApp {
    }
    public void dealerMoves(){
        System.out.println("DEALER'S TURN");
-       for (int c = 0; c < 2; c++){
+       for (int c = 0; c < 1; c++){
            topCard++;
            d1.dHand.add(deck.get(topCard));
        }
